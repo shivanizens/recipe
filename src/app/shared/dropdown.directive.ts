@@ -8,7 +8,7 @@ import
 
 @Directive({
     selector: '[appDropdown]',
-    standalone: false
+    standalone: true
 })
 export class DropdownDirective{
 // @HostBinding('class.show') isOpen = false;

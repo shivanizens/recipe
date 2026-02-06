@@ -1,33 +1,41 @@
 import { Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { AuthResponseData, AuthService } from './auth.service';
 import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AlertComponent } from '../shared/alert/alert.component';
 import { PlaceholderDirective } from '../shared/placeholder/placeholder.directive';
+import { CommonModule } from '@angular/common';
+import { LoadingSpinnerComponent } from '../shared/loading-spinner/loading-spinner.component';
 
 @Component({
-    selector: 'app-auth',
-    templateUrl: './auth.component.html',
-    styleUrls: ['./auth.component.css'],
-    standalone: false
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    PlaceholderDirective,
+    LoadingSpinnerComponent
+  ],
 })
 export class AuthComponent {
   isLoginMode = true;
   isLoading = false;
   error: string = '';
   @ViewChild(
-    PlaceholderDirective, 
-    {static: false}
-    ) alertHost!: PlaceholderDirective;
+    PlaceholderDirective,
+    { static: false }
+  ) alertHost!: PlaceholderDirective;
 
-    private closeSub!: Subscription;
+  private closeSub!: Subscription;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private componentFactoryResolver: ComponentFactoryResolver,
-    ) { }
+  ) { }
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -35,7 +43,7 @@ export class AuthComponent {
   }
 
   onSubmit(form: NgForm) {
-    if(!form.valid){
+    if (!form.valid) {
       return;
     }
     const email = form.value.email;
@@ -45,10 +53,10 @@ export class AuthComponent {
     this.isLoading = true;
 
     //Check if the user is in login mode or signup mode
-    if(this.isLoginMode){
+    if (this.isLoginMode) {
       authObs = this.authService.login(email, password)
     }
-    else{
+    else {
       authObs = this.authService.signup(email, password)
     }
 
@@ -60,7 +68,7 @@ export class AuthComponent {
         this.router.navigate(['/recipes']);
       },
       errMessage => {
-        
+
         console.log(errMessage);
         this.error = errMessage;
         this.showErrorAlert(errMessage);
@@ -73,9 +81,9 @@ export class AuthComponent {
   }
 
 
-  private showErrorAlert(message: string){
-    const alertCmpFactory = 
-    this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
+  private showErrorAlert(message: string) {
+    const alertCmpFactory =
+      this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
     const hostViewContainerRef = this.alertHost.viewContainerRef;
     hostViewContainerRef.clear();
 
@@ -93,8 +101,8 @@ export class AuthComponent {
     );
   }
 
-  ngOnDestroy(){
-    if(this.closeSub){
+  ngOnDestroy() {
+    if (this.closeSub) {
       this.closeSub.unsubscribe();
     }
   }

@@ -6,12 +6,15 @@ import { ShoppingListService } from './shopping-list.service';
 import { Subscription } from 'rxjs'
 import { RecipesService } from '../recipes/recipes.service';
 import { Recipe } from '../recipes/recipe.model';
+import { ShoppingListEditComponent } from './shopping-list-edit/shopping-list-edit.component';
 
 @Component({
     selector: 'app-shopping-list',
     templateUrl: './shopping-list.component.html',
     styleUrls: ['./shopping-list.component.css'],
-    standalone: false
+    standalone: true,
+    imports: [ShoppingListEditComponent],
+    providers: [ShoppingListService, RecipesService]
 })
 export class ShoppingListComponent {
   ingredients: Ingredient[] = [];

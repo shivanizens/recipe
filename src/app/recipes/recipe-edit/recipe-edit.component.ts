@@ -1,16 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 
 import{ActivatedRoute, Params, Router} from '@angular/router';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms'
+import { FormGroup, FormControl, Validators, FormArray, ReactiveFormsModule } from '@angular/forms'
 
 import {RecipesService} from '../recipes.service';
 import {Recipe} from '../recipe.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-recipe-edit',
     templateUrl: './recipe-edit.component.html',
     styleUrls: ['./recipe-edit.component.css'],
-    standalone: false
+    standalone: true,
+      
+ imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ],
+
 })
 export class RecipeEditComponent implements OnInit {
   id!: number;

@@ -5,17 +5,24 @@ import {
   OnDestroy,
 } from '@angular/core';
 
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { Ingredient } from '../../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-shopping-list-edit',
     templateUrl: './shopping-list-edit.component.html',
     styleUrls: ['./shopping-list-edit.component.css'],
-    standalone: false
+    standalone: true,
+    
+imports: [
+    CommonModule,
+    FormsModule,   // ✅ enables ngForm, ngModel, etc.
+  ],
+
 })
 export class ShoppingListEditComponent implements OnInit, OnDestroy {
   editMode = false;

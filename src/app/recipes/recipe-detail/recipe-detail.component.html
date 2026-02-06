@@ -42,7 +42,7 @@
   <div class="row">
     <div class="col-xs-12">
       <ul class="list-group">
-        @for (ing of recipeToDisplay.ingredients; track ing) {
+        @for (ing of recipeToDisplay.ingredients; track $index) {
           <li
             class="list-group-item"
             >
