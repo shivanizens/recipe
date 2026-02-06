@@ -7,9 +7,10 @@ import { Recipe } from '../recipe.model';
 import{RecipesService} from '../recipes.service';
 
 @Component({
-  selector: 'app-recipe-list',
-  templateUrl: './recipe-list.component.html',
-  styleUrls: ['./recipe-list.component.css'],
+    selector: 'app-recipe-list',
+    templateUrl: './recipe-list.component.html',
+    styleUrls: ['./recipe-list.component.css'],
+    standalone: false
 })
 export class RecipeListComponent {
 recipes: Recipe[] = [];

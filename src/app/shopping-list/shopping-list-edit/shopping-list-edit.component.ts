@@ -12,9 +12,10 @@ import { Ingredient } from '../../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
-  selector: 'app-shopping-list-edit',
-  templateUrl: './shopping-list-edit.component.html',
-  styleUrls: ['./shopping-list-edit.component.css'],
+    selector: 'app-shopping-list-edit',
+    templateUrl: './shopping-list-edit.component.html',
+    styleUrls: ['./shopping-list-edit.component.css'],
+    standalone: false
 })
 export class ShoppingListEditComponent implements OnInit, OnDestroy {
   editMode = false;

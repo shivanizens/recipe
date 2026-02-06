@@ -7,7 +7,8 @@ import
     } from '@angular/core';
 
 @Directive({
-  selector: '[appDropdown]'
+    selector: '[appDropdown]',
+    standalone: false
 })
 export class DropdownDirective{
 // @HostBinding('class.show') isOpen = false;

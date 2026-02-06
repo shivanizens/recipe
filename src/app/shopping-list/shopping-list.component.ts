@@ -8,9 +8,10 @@ import { RecipesService } from '../recipes/recipes.service';
 import { Recipe } from '../recipes/recipe.model';
 
 @Component({
-  selector: 'app-shopping-list',
-  templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.css'],
+    selector: 'app-shopping-list',
+    templateUrl: './shopping-list.component.html',
+    styleUrls: ['./shopping-list.component.css'],
+    standalone: false
 })
 export class ShoppingListComponent {
   ingredients: Ingredient[] = [];
