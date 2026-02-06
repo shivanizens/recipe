@@ -1,18 +1,19 @@
 <div class="row">
   <div class="col-12">
     <button
-    class="btn btn-primary m-2"
-    (click)='onNewRecipe()'
+      class="btn btn-primary m-2"
+      (click)='onNewRecipe()'
     >New Recipe</button>
   </div>
 </div>
 <hr />
 <div class="row">
   <div class="col-12">
-    <app-recipe-item
-    [recipe]="recipeItem"
-      *ngFor="let recipeItem of recipes; let i = index;"
-      [index]="i"
+    @for (recipeItem of recipes; track recipeItem; let i = $index) {
+      <app-recipe-item
+        [recipe]="recipeItem"
+        [index]="i"
       ></app-recipe-item>
+    }
   </div>
 </div>

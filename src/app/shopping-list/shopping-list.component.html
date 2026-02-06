@@ -3,14 +3,15 @@
     <app-shopping-list-edit ></app-shopping-list-edit>
     <hr />
     <ul class="list-group">
-      <a
-        class="list-group-item"
-        style="cursor: pointer"
-        *ngFor="let ingredient of ingredients; let i = index"
-        (click)="onClickingItem(i)"
-      >
-        {{ ingredient.name }} ({{ ingredient.amount }})
-      </a>
+      @for (ingredient of ingredients; track ingredient; let i = $index) {
+        <a
+          class="list-group-item"
+          style="cursor: pointer"
+          (click)="onClickingItem(i)"
+          >
+          {{ ingredient.name }} ({{ ingredient.amount }})
+        </a>
+      }
     </ul>
   </div>
 </div>
